@@ -1,0 +1,132 @@
+
+  get searchfield() { return browser.element('#searchInput'); }
+  get searchbutton() { return browser.element('#btn-medicine-search'); }
+  get searchlist() { return browser.element('.list-group'); }
+  get list() { return browser.element("#listTab"); }
+  get map() { return browser.element("#mapTab"); }
+  get backtotop() { return browser.element("#backToTop"); }
+  get mapdesktop() { return browser.element("//div[@id='desktopStyle']/div[2]/h2"); }
+  get resultheader() { return browser.element("//label[contains(@class, 'module__searchResultText')]"); }
+  get contactnumber() { return browser.element('//div[contains(@class, "styles-module__styles-module__searchListNumber")]'); }
+  get openhours() { return browser.element("(//*[@id='storeList']/div/h5/span[2])[1]"); }
+  get opentime() { return browser.element("(//div[@class='col-sm-4'])[1]"); }
+  get showmorebutton() { return browser.element("#btnShowMore"); }
+  get selectbutton() { return browser.element('//*[@id="storeList"]/button'); }
+  get contactdetailspage() { return browser.element('//*[@id="pageTitle-Your contact details"]'); }
+  get cantfindyourgplink() { return browser.element('//*[@id="locationCardExpansion"]/div[1]/a'); }
+  get viewstoredetails() { return browser.element('//label[contains(@class, "styles-module__labelLink")]') }
+  get opendetails() { return browser.element('//div[contains(@class, "styles-module__searchListExpansionHourList")]') }
+
+  //Open dashboard Page
+  gotoDashboardPage() {
+     browser.url([wdioConf.config.baseUrl,"/dashboard"].join(''));
+     browser.pause(3000);
+    // HomePage.acceptCookie();
+  }
+
+
+  getDistance() {
+    return this.searchlist.$$("li").map(element => {
+      return element.element("//div[contains(@class, 'styles-module__pharmacySearchListHeading')]").getText();
+    });
+  }
+
+
+  getListHeadingName() {
+    return this.searchlist.$$("li").map(element => {
+      return element.element('#searchName').getText();
+    });
+  }
+
+  getAddress() {
+    return this.searchlist.$$("li").map(element => {
+      return element.element("//div[contains(@class, 'styles-module__searchListItemText')]").getText();
+    });
+  }
+
+  clickButton(button) {
+    switch (button) {
+      case 'Show more':
+        if (deviceType.isMobile) {
+          this.showmorebutton.click();
+        }
+        break;
+      case 'Back to the top':
+        if (deviceType.isMobile) {
+          this.backtotop.click();
+        }
+        break;
+      case 'Cant find your GP':
+        this.cantfindyourgplink.click();
+        break;
+      default:
+        browser.element('"' + button + '"').click();
+    }
+  }
+
+  selectDetailButton(button, postcode) {
+    switch (button) {
+      case 'Select':
+        var identifier = '//*[text()="' + postcode + '"]/following-sibling::div/button';
+        browser.element(identifier).waitForVisible(5000);
+        browser.element(identifier).click();
+        browser.pause(3000);
+        break;
+      case 'View Store Details':
+        var identifier = '//*[text()="' + postcode + '"]/following-sibling::div/label';
+        browser.element(identifier).click();
+        browser.pause(3000);
+        break;
+    }
+  }
+
+  getOpenDays() {
+    var result = browser.$$("[class*='styles-module__storeListDay']").map(element => {
+      return element.getText();
+    });
+    return result;
+  }
+
+  getOpenHours() {
+    var result = browser.$$("[class*='styles-module__storeListHours']").map(element => {
+      return element.getText();
+    });
+    return result;
+  }
+
+  isPostcodeMatched(postcode) {
+    var identifier = browser.element('//div[text()="' + postcode + '"]')
+    return identifier.isVisible()
+  }
+
+  chooseEngStoreByPostcode() {
+    this.searchfield.setValue(Store_Test_data.EngStorePostcode);
+    this.searchbutton.click();
+    browser.pause(1000)
+    this.searchbutton.click();
+    this.selectDetailButton('Select', Store_Test_data.EngStorePostcode);
+  }
+
+  chooseWelshStoreByPostcode() {
+    this.searchfield.setValue(Store_Test_data.WelshStorePostcode);
+    this.searchbutton.click();
+    browser.pause(1000)
+    this.searchbutton.click();
+    this.selectDetailButton('Select', Store_Test_data.WelshStorePostcode);
+  }
+
+  chooseStoreByPostcode(postcode) {
+    this.searchfield.setValue(postcode);
+    this.searchbutton.click();
+    browser.pause(1000)
+    this.searchbutton.click();
+    this.selectDetailButton('Select', postcode);
+  }
+
+  chooseScotStoreByPostcode() {
+    this.searchfield.setValue(Store_Test_data.ScotStorePostcode);
+    this.searchbutton.click();
+    browser.pause(1000)
+    this.searchbutton.click();
+    this.selectDetailButton('Select', Store_Test_data.ScotStorePostcode);
+  }

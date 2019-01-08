@@ -1,0 +1,53 @@
+
+When(/^the customer clicks on '([^']*)'$/, async function (arg1) {
+    if (deviceType.isMobile) {
+        StoreSearchPage.backtotop.click();
+    }
+});
+
+Then(/^the customer is brought to the top of the search result list$/, async function () {
+    if (deviceType.isMobile) {
+        assert.isTrue(StoreSearchPage.searchfield.isVisible(), 'top of he page is not displayed');
+    }
+});
+
+Then(/^they get all results$/, async function () {
+    if (deviceType.isDesktop) {
+        assert.isFalse(StoreSearchPage.showmorebutton.isVisible(), 'All results get displayed');
+    }
+});
+
+Then(/^customer is presented with (\d+) more results$/, async function (count) {
+    if (deviceType.isMobile) {
+        expect(StoreSearchPage.getDistance()).to.have.lengthOf.above(10);
+    }
+});
+
+When(/^the customer clicks the '([^']*)' for the '([^']*)'$/, async function (button, postcode) {
+    StoreSearchPage.selectDetailButton(button, postcode);
+    browser.pause(1000);
+});
+
+Then(/^the customer will be directed to contact details page$/, async function () {
+    assert.isTrue(StoreSearchPage.contactdetailspage.isVisible(), 'Contact details page is not displayed');
+});
+
+Then(/^No NHS Contract\/Opticians Stores are shown in the search results for the '([^']*)'$/, async function (postcode) {
+    assert.isFalse(StoreSearchPage.isPostcodeMatched(postcode), 'opticians/no nhs contract stores should not display');
+});
+
+Then(/^the customer is not allowed to enter more that (\d+) characters$/, async function (arg1) {
+    assert.isTrue((StoreSearchPage.searchfield.getValue().length) === 150)
+});
+
+Then(/^they will be presented with an error message in the predictive drop down$/, async function () {
+    expect(MedicineSearchPage.suggestedResultsText()).to.include('No result found, please try another search term.');
+});
+
+Then(/^the results containing these '([^']*)' are displayed$/, async function (result) {
+    expect(StoreSearchPage.resultheader.getText()).to.include(result);
+});
+
+Then(/^store results are not displayed$/, async function () {
+    assert.isFalse(StoreSearchPage.resultheader.isVisible(), 'special characters should not allowed');
+});
