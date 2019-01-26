@@ -1,0 +1,29 @@
+var merge = require('deepmerge');
+var wdioConf = require('./wdio.conf.js');
+exports.config = merge(wdioConf.config, {
+    specs: [
+        './test/features/dashboardGPLink/dashboard.feature',
+    ],
+    // Patterns to exclude.
+    exclude: [
+       // './test/features/registration.feature'
+    ],
+    //baseUrl: 'http://pharmacy-qa1.tools.boots.com:3000',
+    baseUrl:'http://pharmacy-qa1.gcp.boots.com:3000/online/pharmacy/',
+    //baseUrl:'http://localhost:3000',
+    maxInstances: 10,
+    cucumberOpts: {
+        tagExpression: 'not @pending',
+    },
+    capabilities: [
+        {
+            browserName: 'chrome',
+            platform: 'Windows 10',
+            maxInstances: '5',
+            chromeOptions: {
+                args: ['--disable-web-security', '--no-sandbox', '--disable-dev-shm-usage']
+            }
+        },
+    ],
+
+}, { clone: false });

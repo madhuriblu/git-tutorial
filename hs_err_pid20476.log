@@ -1,0 +1,354 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (malloc) failed to allocate 32756 bytes for ChunkPool::allocate
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   In 32 bit mode, the process size limit was hit
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Use 64 bit Java on a 64 bit OS
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (allocation.cpp:273), pid=20476, tid=0x00007480
+#
+# JRE version: Java(TM) SE Runtime Environment (8.0_191-b12) (build 1.8.0_191-b12)
+# Java VM: Java HotSpot(TM) Client VM (25.191-b12 mixed mode, sharing windows-x86 )
+# Failed to write core dump. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x01081c00):  JavaThread "main" [_thread_in_vm, id=29824, stack(0x00d60000,0x00db0000)]
+
+Stack: [0x00d60000,0x00db0000],  sp=0x00dad71c,  free space=309k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [jvm.dll+0x1acfeb]
+V  [jvm.dll+0x1a56c8]
+V  [jvm.dll+0x8de91]
+V  [jvm.dll+0x8e06d]
+V  [jvm.dll+0x8e4e7]
+V  [jvm.dll+0xa5f3b]
+V  [jvm.dll+0x39062]
+V  [jvm.dll+0x39f28]
+V  [jvm.dll+0x50fa5]
+V  [jvm.dll+0x108b29]
+V  [jvm.dll+0x108cfb]
+C  [java.dll+0x1cb6]
+C  0x65732d6d
+
+Java frames: (J=compiled Java code, j=interpreted, Vv=VM code)
+j  java.lang.ClassLoader.defineClass1(Ljava/lang/String;[BIILjava/security/ProtectionDomain;Ljava/lang/String;)Ljava/lang/Class;+0
+j  java.lang.ClassLoader.defineClass(Ljava/lang/String;[BIILjava/security/ProtectionDomain;)Ljava/lang/Class;+27
+j  java.security.SecureClassLoader.defineClass(Ljava/lang/String;[BIILjava/security/CodeSource;)Ljava/lang/Class;+12
+j  java.net.URLClassLoader.defineClass(Ljava/lang/String;Lsun/misc/Resource;)Ljava/lang/Class;+138
+j  java.net.URLClassLoader.access$100(Ljava/net/URLClassLoader;Ljava/lang/String;Lsun/misc/Resource;)Ljava/lang/Class;+3
+j  java.net.URLClassLoader$1.run()Ljava/lang/Class;+43
+j  java.net.URLClassLoader$1.run()Ljava/lang/Object;+1
+v  ~StubRoutines::call_stub
+j  java.security.AccessController.doPrivileged(Ljava/security/PrivilegedExceptionAction;Ljava/security/AccessControlContext;)Ljava/lang/Object;+0
+j  java.net.URLClassLoader.findClass(Ljava/lang/String;)Ljava/lang/Class;+13
+J 303 C1 java.lang.ClassLoader.loadClass(Ljava/lang/String;Z)Ljava/lang/Class; (122 bytes) @ 0x027d7d0c [0x027d7ab0+0x25c]
+j  sun.misc.Launcher$AppClassLoader.loadClass(Ljava/lang/String;Z)Ljava/lang/Class;+81
+j  java.lang.ClassLoader.loadClass(Ljava/lang/String;)Ljava/lang/Class;+3
+v  ~StubRoutines::call_stub
+j  org.seleniumhq.jetty9.security.SecurityHandler.findLoginService()Lorg/seleniumhq/jetty9/security/LoginService;+4
+j  org.seleniumhq.jetty9.security.SecurityHandler.doStart()V+76
+j  org.seleniumhq.jetty9.security.ConstraintSecurityHandler.doStart()V+57
+j  org.seleniumhq.jetty9.util.component.AbstractLifeCycle.start()V+31
+j  org.seleniumhq.jetty9.util.component.ContainerLifeCycle.start(Lorg/seleniumhq/jetty9/util/component/LifeCycle;)V+1
+j  org.seleniumhq.jetty9.util.component.ContainerLifeCycle.doStart()V+119
+j  org.seleniumhq.jetty9.server.handler.AbstractHandler.doStart()V+55
+j  org.seleniumhq.jetty9.server.handler.ScopedHandler.doStart()V+28
+j  org.seleniumhq.jetty9.server.handler.ContextHandler.startContext()V+36
+j  org.seleniumhq.jetty9.servlet.ServletContextHandler.startContext()V+83
+j  org.seleniumhq.jetty9.server.handler.ContextHandler.doStart()V+159
+j  org.seleniumhq.jetty9.servlet.ServletContextHandler.doStart()V+15
+j  org.seleniumhq.jetty9.util.component.AbstractLifeCycle.start()V+31
+j  org.seleniumhq.jetty9.util.component.ContainerLifeCycle.start(Lorg/seleniumhq/jetty9/util/component/LifeCycle;)V+1
+j  org.seleniumhq.jetty9.server.Server.start(Lorg/seleniumhq/jetty9/util/component/LifeCycle;)V+9
+j  org.seleniumhq.jetty9.util.component.ContainerLifeCycle.doStart()V+119
+j  org.seleniumhq.jetty9.server.handler.AbstractHandler.doStart()V+55
+j  org.seleniumhq.jetty9.server.Server.doStart()V+209
+j  org.seleniumhq.jetty9.util.component.AbstractLifeCycle.start()V+31
+j  org.openqa.selenium.grid.server.BaseServer.start()Lorg/openqa/selenium/grid/server/BaseServer;+43
+j  org.openqa.selenium.remote.server.SeleniumServer.boot()Z+108
+j  org.openqa.grid.selenium.GridLauncherV3.lambda$buildLaunchers$3([Ljava/lang/String;)Lorg/openqa/grid/shared/Stoppable;+70
+j  org.openqa.grid.selenium.GridLauncherV3$$Lambda$1.launch([Ljava/lang/String;)Lorg/openqa/grid/shared/Stoppable;+5
+j  org.openqa.grid.selenium.GridLauncherV3.lambda$launch$0([Ljava/lang/String;Lorg/openqa/grid/selenium/GridLauncherV3$GridItemLauncher;)Lorg/openqa/grid/shared/Stoppable;+2
+j  org.openqa.grid.selenium.GridLauncherV3$$Lambda$4.apply(Ljava/lang/Object;)Ljava/lang/Object;+8
+j  java.util.Optional.map(Ljava/util/function/Function;)Ljava/util/Optional;+21
+j  org.openqa.grid.selenium.GridLauncherV3.launch([Ljava/lang/String;)Lorg/openqa/grid/shared/Stoppable;+14
+j  org.openqa.grid.selenium.GridLauncherV3.main([Ljava/lang/String;)V+8
+v  ~StubRoutines::call_stub
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x15a47400 JavaThread "qtp17307026-15" [_thread_blocked, id=33216, stack(0x16720000,0x16770000)]
+  0x15a97c00 JavaThread "qtp17307026-14" [_thread_blocked, id=35264, stack(0x16690000,0x166e0000)]
+  0x15a97000 JavaThread "qtp17307026-13" [_thread_blocked, id=29016, stack(0x16600000,0x16650000)]
+  0x15a72000 JavaThread "qtp17307026-12" [_thread_blocked, id=23608, stack(0x16570000,0x165c0000)]
+  0x15a40800 JavaThread "qtp17307026-11" [_thread_blocked, id=23836, stack(0x164e0000,0x16530000)]
+  0x1513a000 JavaThread "qtp17307026-10" [_thread_blocked, id=28760, stack(0x15ea0000,0x15ef0000)]
+  0x15a77000 JavaThread "pool-2-thread-1" [_thread_blocked, id=35460, stack(0x15260000,0x152b0000)]
+  0x01131800 JavaThread "Service Thread" daemon [_thread_blocked, id=928, stack(0x14f40000,0x14f90000)]
+  0x01119800 JavaThread "C1 CompilerThread0" daemon [_thread_blocked, id=35424, stack(0x14eb0000,0x14f00000)]
+  0x01118400 JavaThread "Attach Listener" daemon [_thread_blocked, id=35560, stack(0x14e20000,0x14e70000)]
+  0x01116c00 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=31392, stack(0x14d90000,0x14de0000)]
+  0x01107000 JavaThread "Finalizer" daemon [_thread_blocked, id=30568, stack(0x047b0000,0x04800000)]
+  0x010a9800 JavaThread "Reference Handler" daemon [_thread_blocked, id=35720, stack(0x04720000,0x04770000)]
+=>0x01081c00 JavaThread "main" [_thread_in_vm, id=29824, stack(0x00d60000,0x00db0000)]
+
+Other Threads:
+  0x010a6400 VMThread [stack: 0x046d0000,0x04720000] [id=33184]
+  0x01148c00 WatcherThread [stack: 0x14fd0000,0x15020000] [id=25280]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Heap:
+ def new generation   total 4928K, used 280K [0x04800000, 0x04d50000, 0x09d50000)
+  eden space 4416K,   6% used [0x04800000, 0x04846008, 0x04c50000)
+  from space 512K,   0% used [0x04c50000, 0x04c50000, 0x04cd0000)
+  to   space 512K,   0% used [0x04cd0000, 0x04cd0000, 0x04d50000)
+ tenured generation   total 10944K, used 3209K [0x09d50000, 0x0a800000, 0x14800000)
+   the space 10944K,  29% used [0x09d50000, 0x0a072480, 0x0a072600, 0x0a800000)
+ Metaspace       used 4405K, capacity 5115K, committed 5120K, reserved 6528K
+
+Card table byte_map: [0x01180000,0x01210000] byte_map_base: 0x0115c000
+
+Polling page: 0x00db0000
+
+CodeCache: size=32768Kb used=1108Kb max_used=1117Kb free=31659Kb
+ bounds [0x026d0000, 0x027e8000, 0x046d0000]
+ total_blobs=521 nmethods=340 adapters=112
+ compilation: disabled (not enough contiguous free space left)
+
+Compilation events (10 events):
+Event: 0.649 Thread 0x01119800  340             sun.nio.cs.UTF_8$Decoder::decodeArrayLoop (691 bytes)
+Event: 0.668 Thread 0x01119800 nmethod 340 0x027e2948 code [0x027e2ed0, 0x027e441c]
+Event: 0.668 Thread 0x01119800  341             java.util.Hashtable::rehash (142 bytes)
+Event: 0.669 Thread 0x01119800 nmethod 341 0x027a6ac8 code [0x027a6c00, 0x027a6eec]
+Event: 0.669 Thread 0x01119800  342   !         java.lang.ref.Reference::tryHandlePending (115 bytes)
+Event: 0.669 Thread 0x01119800 nmethod 342 0x027e74c8 code [0x027e7650, 0x027e7b24]
+Event: 0.669 Thread 0x01119800  343             java.lang.invoke.LambdaForm$BasicType::basicType (19 bytes)
+Event: 0.669 Thread 0x01119800 nmethod 343 0x027a67c8 code [0x027a68e0, 0x027a69c4]
+Event: 0.669 Thread 0x01119800  344             jdk.internal.org.objectweb.asm.Frame::execute (2252 bytes)
+Event: 0.672 Thread 0x01119800 
+
+
+GC Heap History (10 events):
+Event: 0.346 GC heap before
+{Heap before GC invocations=1 (full 0):
+ def new generation   total 4928K, used 4928K [0x04800000, 0x04d50000, 0x09d50000)
+  eden space 4416K, 100% used [0x04800000, 0x04c50000, 0x04c50000)
+  from space 512K, 100% used [0x04cd0000, 0x04d50000, 0x04d50000)
+  to   space 512K,   0% used [0x04c50000, 0x04c50000, 0x04cd0000)
+ tenured generation   total 10944K, used 782K [0x09d50000, 0x0a800000, 0x14800000)
+   the space 10944K,   7% used [0x09d50000, 0x09e13868, 0x09e13a00, 0x0a800000)
+ Metaspace       used 2009K, capacity 3477K, committed 3520K, reserved 4480K
+Event: 0.350 GC heap after
+Heap after GC invocations=2 (full 0):
+ def new generation   total 4928K, used 512K [0x04800000, 0x04d50000, 0x09d50000)
+  eden space 4416K,   0% used [0x04800000, 0x04800000, 0x04c50000)
+  from space 512K, 100% used [0x04c50000, 0x04cd0000, 0x04cd0000)
+  to   space 512K,   0% used [0x04cd0000, 0x04cd0000, 0x04d50000)
+ tenured generation   total 10944K, used 1700K [0x09d50000, 0x0a800000, 0x14800000)
+   the space 10944K,  15% used [0x09d50000, 0x09ef93e8, 0x09ef9400, 0x0a800000)
+ Metaspace       used 2009K, capacity 3477K, committed 3520K, reserved 4480K
+}
+Event: 0.477 GC heap before
+{Heap before GC invocations=2 (full 0):
+ def new generation   total 4928K, used 4928K [0x04800000, 0x04d50000, 0x09d50000)
+  eden space 4416K, 100% used [0x04800000, 0x04c50000, 0x04c50000)
+  from space 512K, 100% used [0x04c50000, 0x04cd0000, 0x04cd0000)
+  to   space 512K,   0% used [0x04cd0000, 0x04cd0000, 0x04d50000)
+ tenured generation   total 10944K, used 1700K [0x09d50000, 0x0a800000, 0x14800000)
+   the space 10944K,  15% used [0x09d50000, 0x09ef93e8, 0x09ef9400, 0x0a800000)
+ Metaspace       used 3271K, capacity 4169K, committed 4288K, reserved 4480K
+Event: 0.480 GC heap after
+Heap after GC invocations=3 (full 0):
+ def new generation   total 4928K, used 511K [0x04800000, 0x04d50000, 0x09d50000)
+  eden space 4416K,   0% used [0x04800000, 0x04800000, 0x04c50000)
+  from space 512K,  99% used [0x04cd0000, 0x04d4fff8, 0x04d50000)
+  to   space 512K,   0% used [0x04c50000, 0x04c50000, 0x04cd0000)
+ tenured generation   total 10944K, used 2742K [0x09d50000, 0x0a800000, 0x14800000)
+   the space 10944K,  25% used [0x09d50000, 0x09ffd990, 0x09ffda00, 0x0a800000)
+ Metaspace       used 3271K, capacity 4169K, committed 4288K, reserved 4480K
+}
+Event: 0.593 GC heap before
+{Heap before GC invocations=3 (full 0):
+ def new generation   total 4928K, used 4927K [0x04800000, 0x04d50000, 0x09d50000)
+  eden space 4416K, 100% used [0x04800000, 0x04c50000, 0x04c50000)
+  from space 512K,  99% used [0x04cd0000, 0x04d4fff8, 0x04d50000)
+  to   space 512K,   0% used [0x04c50000, 0x04c50000, 0x04cd0000)
+ tenured generation   total 10944K, used 2742K [0x09d50000, 0x0a800000, 0x14800000)
+   the space 10944K,  25% used [0x09d50000, 0x09ffd990, 0x09ffda00, 0x0a800000)
+ Metaspace       used 4016K, capacity 4832K, committed 4864K, reserved 5504K
+Event: 0.597 GC heap after
+Heap after GC invocations=4 (full 0):
+ def new generation   total 4928K, used 511K [0x04800000, 0x04d50000, 0x09d50000)
+  eden space 4416K,   0% used [0x04800000, 0x04800000, 0x04c50000)
+  from space 512K,  99% used [0x04c50000, 0x04ccfff8, 0x04cd0000)
+  to   space 512K,   0% used [0x04cd0000, 0x04cd0000, 0x04d50000)
+ tenured generation   total 10944K, used 3743K [0x09d50000, 0x0a800000, 0x14800000)
+   the space 10944K,  34% used [0x09d50000, 0x0a0f7ce8, 0x0a0f7e00, 0x0a800000)
+ Metaspace       used 4016K, capacity 4832K, committed 4864K, reserved 5504K
+}
+Event: 0.650 GC heap before
+{Heap before GC invocations=4 (full 0):
+ def new generation   total 4928K, used 2709K [0x04800000, 0x04d50000, 0x09d50000)
+  eden space 4416K,  49% used [0x04800000, 0x04a25650, 0x04c50000)
+  from space 512K,  99% used [0x04c50000, 0x04ccfff8, 0x04cd0000)
+  to   space 512K,   0% used [0x04cd0000, 0x04cd0000, 0x04d50000)
+ tenured generation   total 10944K, used 3743K [0x09d50000, 0x0a800000, 0x14800000)
+   the space 10944K,  34% used [0x09d50000, 0x0a0f7ce8, 0x0a0f7e00, 0x0a800000)
+ Metaspace       used 4403K, capacity 5118K, committed 5120K, reserved 7552K
+Event: 0.659 GC heap after
+Heap after GC invocations=5 (full 1):
+ def new generation   total 4928K, used 0K [0x04800000, 0x04d50000, 0x09d50000)
+  eden space 4416K,   0% used [0x04800000, 0x04800000, 0x04c50000)
+  from space 512K,   0% used [0x04c50000, 0x04c50000, 0x04cd0000)
+  to   space 512K,   0% used [0x04cd0000, 0x04cd0000, 0x04d50000)
+ tenured generation   total 10944K, used 3304K [0x09d50000, 0x0a800000, 0x14800000)
+   the space 10944K,  30% used [0x09d50000, 0x0a08a1e8, 0x0a08a200, 0x0a800000)
+ Metaspace       used 4403K, capacity 5118K, committed 5120K, reserved 6528K
+}
+Event: 0.659 GC heap before
+{Heap before GC invocations=5 (full 1):
+ def new generation   total 4928K, used 0K [0x04800000, 0x04d50000, 0x09d50000)
+  eden space 4416K,   0% used [0x04800000, 0x04800000, 0x04c50000)
+  from space 512K,   0% used [0x04c50000, 0x04c50000, 0x04cd0000)
+  to   space 512K,   0% used [0x04cd0000, 0x04cd0000, 0x04d50000)
+ tenured generation   total 10944K, used 3304K [0x09d50000, 0x0a800000, 0x14800000)
+   the space 10944K,  30% used [0x09d50000, 0x0a08a1e8, 0x0a08a200, 0x0a800000)
+ Metaspace       used 4403K, capacity 5118K, committed 5120K, reserved 8576K
+Event: 0.666 GC heap after
+Heap after GC invocations=6 (full 2):
+ def new generation   total 4928K, used 0K [0x04800000, 0x04d50000, 0x09d50000)
+  eden space 4416K,   0% used [0x04800000, 0x04800000, 0x04c50000)
+  from space 512K,   0% used [0x04c50000, 0x04c50000, 0x04cd0000)
+  to   space 512K,   0% used [0x04cd0000, 0x04cd0000, 0x04d50000)
+ tenured generation   total 10944K, used 3209K [0x09d50000, 0x0a800000, 0x14800000)
+   the space 10944K,  29% used [0x09d50000, 0x0a072480, 0x0a072600, 0x0a800000)
+ Metaspace       used 4397K, capacity 5098K, committed 5120K, reserved 6528K
+}
+
+Deoptimization events (0 events):
+No events
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (10 events):
+Event: 0.268 Thread 0x01081c00 Exception <a 'java/io/FileNotFoundException'> (0x049dfb58) thrown at [C:\workspace\8-2-build-windows-i586-cygwin\jdk8u191\11896\hotspot\src\share\vm\prims\jni.cpp, line 709]
+Event: 0.320 Thread 0x01081c00 Exception <a 'java/lang/NoClassDefFoundError': org/slf4j/Logger> (0x04bd75d8) thrown at [C:\workspace\8-2-build-windows-i586-cygwin\jdk8u191\11896\hotspot\src\share\vm\classfile\systemDictionary.cpp, line 199]
+Event: 0.351 Thread 0x01081c00 Exception <a 'java/lang/NoSuchMethodError': java.lang.Object.lambda$static$0(Ljava/lang/Runnable;)Z> (0x04800800) thrown at [C:\workspace\8-2-build-windows-i586-cygwin\jdk8u191\11896\hotspot\src\share\vm\interpreter\linkResolver.cpp, line 620]
+Event: 0.366 Thread 0x01081c00 Exception <a 'java/lang/NoSuchMethodError': java.lang.Object.lambda$get$3(Lorg/openqa/selenium/grid/web/UrlTemplate;Lorg/openqa/selenium/remote/http/HttpRequest;)Z> (0x04884990) thrown at [C:\workspace\8-2-build-windows-i586-cygwin\jdk8u191\11896\hotspot\
+Event: 0.454 Thread 0x01081c00 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x04be70a8) thrown at [C:\workspace\8-2-build-windows-i586-cygwin\jdk8u191\11896\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 605]
+Event: 0.454 Thread 0x01081c00 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x04be86f8) thrown at [C:\workspace\8-2-build-windows-i586-cygwin\jdk8u191\11896\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 605]
+Event: 0.459 Thread 0x01081c00 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x04c085c8) thrown at [C:\workspace\8-2-build-windows-i586-cygwin\jdk8u191\11896\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 605]
+Event: 0.459 Thread 0x01081c00 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x04c09dc0) thrown at [C:\workspace\8-2-build-windows-i586-cygwin\jdk8u191\11896\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 605]
+Event: 0.464 Thread 0x01081c00 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x04c2c2b8) thrown at [C:\workspace\8-2-build-windows-i586-cygwin\jdk8u191\11896\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 605]
+Event: 0.473 Thread 0x01081c00 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x04c3c860) thrown at [C:\workspace\8-2-build-windows-i586-cygwin\jdk8u191\11896\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 605]
+
+Events (10 events):
+Event: 0.670 loading class org/seleniumhq/jetty9/servlet/ServletContextHandler$ServletContainerInitializerCaller
+Event: 0.670 loading class org/seleniumhq/jetty9/servlet/ServletContextHandler$ServletContainerInitializerCaller done
+Event: 0.671 loading class org/seleniumhq/jetty9/http/PathMap$MappedEntry
+Event: 0.671 loading class org/seleniumhq/jetty9/http/PathMap$MappedEntry done
+Event: 0.671 loading class org/seleniumhq/jetty9/security/RoleInfo
+Event: 0.671 loading class org/seleniumhq/jetty9/security/RoleInfo done
+Event: 0.672 loading class org/seleniumhq/jetty9/security/UserDataConstraint
+Event: 0.672 loading class org/seleniumhq/jetty9/security/UserDataConstraint done
+Event: 0.672 loading class org/seleniumhq/jetty9/security/LoginService
+Event: 0.672 loading class org/seleniumhq/jetty9/security/LoginService done
+
+
+Dynamic libraries:
+0x01280000 - 0x012b3000 	C:\Program Files (x86)\Common Files\Oracle\Java\javapath\java.EXE
+0x77640000 - 0x777d0000 	C:\Windows\SYSTEM32\ntdll.dll
+0x74370000 - 0x74450000 	C:\Windows\System32\KERNEL32.DLL
+0x74880000 - 0x74a64000 	C:\Windows\System32\KERNELBASE.dll
+0x6aa20000 - 0x6aabd000 	C:\Windows\SYSTEM32\apphelp.dll
+0x75b10000 - 0x75b88000 	C:\Windows\System32\ADVAPI32.dll
+0x75c30000 - 0x75cef000 	C:\Windows\System32\msvcrt.dll
+0x75390000 - 0x753d4000 	C:\Windows\System32\sechost.dll
+0x74450000 - 0x74510000 	C:\Windows\System32\RPCRT4.dll
+0x73f00000 - 0x73f20000 	C:\Windows\System32\SspiCli.dll
+0x73ef0000 - 0x73efa000 	C:\Windows\System32\CRYPTBASE.dll
+0x75480000 - 0x754d8000 	C:\Windows\System32\bcryptPrimitives.dll
+0x73f20000 - 0x740ad000 	C:\Windows\System32\USER32.dll
+0x741c0000 - 0x741d7000 	C:\Windows\System32\win32u.dll
+0x74140000 - 0x74162000 	C:\Windows\System32\GDI32.dll
+0x75220000 - 0x75384000 	C:\Windows\System32\gdi32full.dll
+0x740c0000 - 0x7413d000 	C:\Windows\System32\msvcp_win.dll
+0x74720000 - 0x7483e000 	C:\Windows\System32\ucrtbase.dll
+0x707c0000 - 0x709c4000 	C:\Windows\WinSxS\x86_microsoft.windows.common-controls_6595b64144ccf1df_6.0.17134.472_none_42ecd1cc44e43e73\COMCTL32.dll
+0x75e00000 - 0x7605c000 	C:\Windows\System32\combase.dll
+0x753e0000 - 0x75406000 	C:\Windows\System32\IMM32.DLL
+0x56ea0000 - 0x56f0a000 	C:\Program Files (x86)\McAfee\Endpoint Security\Threat Prevention\Ips\EpMPApi.dll
+0x74170000 - 0x741b7000 	C:\Windows\System32\WINTRUST.dll
+0x74710000 - 0x7471e000 	C:\Windows\System32\MSASN1.dll
+0x76060000 - 0x761f6000 	C:\Windows\System32\CRYPT32.dll
+0x5f290000 - 0x5f299000 	C:\Program Files (x86)\McAfee\Endpoint Security\Threat Prevention\Ips\EpMPThe.dll
+0x5c710000 - 0x5c745000 	C:\Program Files (x86)\McAfee\Endpoint Security\Threat Prevention\Ips\HIPHandlers.dll
+0x754e0000 - 0x754e6000 	C:\Windows\System32\PSAPI.DLL
+0x75d50000 - 0x75d95000 	C:\Windows\System32\SHLWAPI.dll
+0x76200000 - 0x7754a000 	C:\Windows\System32\SHELL32.dll
+0x74840000 - 0x74879000 	C:\Windows\System32\cfgmgr32.dll
+0x75190000 - 0x75218000 	C:\Windows\System32\shcore.dll
+0x754f0000 - 0x75aaa000 	C:\Windows\System32\windows.storage.dll
+0x74570000 - 0x7457f000 	C:\Windows\System32\kernel.appcore.dll
+0x74bd0000 - 0x74be8000 	C:\Windows\System32\profapi.dll
+0x75da0000 - 0x75de5000 	C:\Windows\System32\powrprof.dll
+0x75df0000 - 0x75df8000 	C:\Windows\System32\FLTLIB.DLL
+0x75410000 - 0x75477000 	C:\Windows\System32\WS2_32.dll
+0x56de0000 - 0x56e9f000 	C:\Program Files (x86)\Java\jre1.8.0_191\bin\msvcr100.dll
+0x56a00000 - 0x56dd3000 	C:\Program Files (x86)\Java\jre1.8.0_191\bin\client\jvm.dll
+0x722a0000 - 0x722a8000 	C:\Windows\SYSTEM32\WSOCK32.dll
+0x70eb0000 - 0x70ed4000 	C:\Windows\SYSTEM32\WINMM.dll
+0x73680000 - 0x73688000 	C:\Windows\SYSTEM32\VERSION.dll
+0x70dd0000 - 0x70df3000 	C:\Windows\SYSTEM32\WINMMBASE.dll
+0x5c9d0000 - 0x5c9dc000 	C:\Program Files (x86)\Java\jre1.8.0_191\bin\verify.dll
+0x569d0000 - 0x569f2000 	C:\Program Files (x86)\Java\jre1.8.0_191\bin\java.dll
+0x569b0000 - 0x569c4000 	C:\Program Files (x86)\Java\jre1.8.0_191\bin\zip.dll
+0x5c9c0000 - 0x5c9ca000 	C:\Program Files (x86)\Java\jre1.8.0_191\bin\management.dll
+0x56990000 - 0x569a5000 	C:\Program Files (x86)\Java\jre1.8.0_191\bin\net.dll
+0x737d0000 - 0x73826000 	C:\Windows\system32\mswsock.dll
+0x5a2b0000 - 0x5a2bf000 	C:\Program Files (x86)\Java\jre1.8.0_191\bin\nio.dll
+
+VM Arguments:
+jvm_args: -Dwebdriver.chrome.driver=C:\Users\m.kamble\Documents\Boots\dhp-ui-automation\node_modules\selenium-standalone\.selenium\chromedriver\2.43-x64-chromedriver -Dwebdriver.ie.driver=C:\Users\m.kamble\Documents\Boots\dhp-ui-automation\node_modules\selenium-standalone\.selenium\iedriver\3.14.0-x64-IEDriverServer.exe -Dwebdriver.edge.driver=C:\Users\m.kamble\Documents\Boots\dhp-ui-automation\node_modules\selenium-standalone\.selenium\edgedriver\17134-MicrosoftEdgeDriver.exe -Dwebdriver.gecko.driver=C:\Users\m.kamble\Documents\Boots\dhp-ui-automation\node_modules\selenium-standalone\.selenium\geckodriver\0.23.0-x64-geckodriver 
+java_command: C:\Users\m.kamble\Documents\Boots\dhp-ui-automation\node_modules\selenium-standalone\.selenium\selenium-server\3.141.0-server.jar
+java_class_path (initial): C:\Users\m.kamble\Documents\Boots\dhp-ui-automation\node_modules\selenium-standalone\.selenium\selenium-server\3.141.0-server.jar
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+PATH=C:\Program Files\nodejs\node_modules\npm\node_modules\npm-lifecycle\node-gyp-bin;C:\Users\m.kamble\Documents\Boots\dhp-ui-automation\node_modules\.bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\nodejs\;C:\Program Files\Git\cmd;C:\Users\m.kamble\AppData\Local\Microsoft\WindowsApps;;C:\Users\m.kamble\AppData\Local\Programs\Microsoft VS Code\bin
+USERNAME=m.kamble
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 79 Stepping 1, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 10.0 , 64 bit Build 17134 (10.0.17134.1)
+
+CPU:total 2 (initial active 2) (2 cores per cpu, 1 threads per core) family 6 model 79 stepping 1, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, avx2, aes, clmul, erms, rtm, 3dnowpref, lzcnt, tsc, bmi1, bmi2, adx
+
+Memory: 4k page, physical 8388148k(2180928k free), swap 10485160k(3836k free)
+
+vm_info: Java HotSpot(TM) Client VM (25.191-b12) for windows-x86 JRE (1.8.0_191-b12), built on Oct  6 2018 08:34:23 by "java_re" with MS VC++ 10.0 (VS2010)
+
+time: Sat Jan 05 21:08:19 2019
+elapsed time: 0 seconds (0d 0h 0m 0s)
+
